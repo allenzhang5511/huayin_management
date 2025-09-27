@@ -125,8 +125,13 @@ def add_artist():
     )
     db.session.add(artist)
     db.session.commit()
-    return response()
 
+    artist = Artist.query.filter_by(nickName=params['nickName']).first()
+    if not artist:
+        return response(code=404, msg="艺人不存在")
+
+    data = {c.name: getattr(artist, c.name) for c in artist.__table__.columns}
+    return response(data=data)
 
 # 修改艺人信息
 @app.route('/api/artist/update', methods=['POST'])
