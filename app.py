@@ -94,6 +94,10 @@ def add_artist():
     req = request.get_json()
     params = req.get('params', {})
 
+    artist = Artist.query.filter_by(nickName=params['nickName']).first()
+    if artist:
+        return response(code=400, msg="艺人已存在")
+
     required = ['avatar', 'name', 'nickName', 'job', 'address', 'qq', 'wechat',
                 'telephone', 'emergencyTelphone', 'creditCardNum',
                 'identityCardFront', 'identityCardReverse', 'salary', 'gender']

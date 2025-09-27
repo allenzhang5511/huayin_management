@@ -14,7 +14,7 @@ class Artist(db.Model):
     artistId = db.Column(db.Integer, primary_key=True, autoincrement=True)
     avatar = db.Column(db.String(200), nullable=False)
     name = db.Column(db.String(80), nullable=False)
-    nickName = db.Column(db.String(80), nullable=False)
+    nickName = db.Column(db.String(80), nullable=False, unique=True)
     job = db.Column(db.Integer, nullable=False)  # 岗位ID
     address = db.Column(db.String(200), nullable=False)
     ID = db.Column(db.String(200), nullable=False)
