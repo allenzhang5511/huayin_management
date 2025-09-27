@@ -17,6 +17,7 @@ class Artist(db.Model):
     nickName = db.Column(db.String(80), nullable=False)
     job = db.Column(db.Integer, nullable=False)  # 岗位ID
     address = db.Column(db.String(200), nullable=False)
+    ID = db.Column(db.String(200), nullable=False)
     qq = db.Column(db.String(20), nullable=False)
     wechat = db.Column(db.String(50), nullable=False)
     telephone = db.Column(db.String(20), nullable=False)

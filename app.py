@@ -107,6 +107,7 @@ def add_artist():
         nickName=params['nickName'],
         job=params['job'],
         address=params['address'],
+        ID=params['ID'],
         qq=params['qq'],
         wechat=params['wechat'],
         telephone=params['telephone'],
@@ -139,7 +140,7 @@ def update_artist():
         return response(code=404, msg="艺人不存在")
 
     # 更新字段
-    fields = ['avatar', 'name', 'nickName', 'jobId', 'address', 'qq', 'wechat',
+    fields = ['avatar', 'name', 'nickName', 'jobId', 'address', 'ID','qq', 'wechat',
               'telephone', 'emergencyTelphone', 'creditCardNum',
               'recommendWord1', 'recommendWord2', 'recommendWord3',
               'identityCardFront', 'identityCardReverse', 'salary', 'priorityRating', 'gender']
@@ -180,9 +181,9 @@ def delete_artist():
 def get_artist():
     req = request.get_json()
     params = req.get('params', {})
-    artist_id = params.get('id')
+    nickName = params.get('nickName')
 
-    artist = Artist.query.get(artist_id)
+    artist = Artist.query.filter_by(nickName=nickName).first()
     if not artist:
         return response(code=404, msg="艺人不存在")
 
