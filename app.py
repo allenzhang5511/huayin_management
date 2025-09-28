@@ -400,6 +400,7 @@ def partnership_rank():
 
         veterans.append({
             "artistId": artist.artistId,
+            "avatar": artist.avatar,
             "nickName": artist.nickName,
             "score": final_score,
             "priorityRating": priority,
