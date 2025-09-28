@@ -303,7 +303,7 @@ def latest_artists():
                 continue  # 跳过老手
 
         # ✅ 假设有评分逻辑（示例：需要查询 Score 表）
-        score_count = Evaluation.filter_by(artistId=artist.artistId).count()
+        score_count = Evaluation.query.filter_by(artistId=artist.artistId).count()
         if score_count >= 3:
             continue  # 跳过老手
 
@@ -319,8 +319,11 @@ def latest_artists():
 
         novices.append({
             "artistId": artist.artistId,
+            "avatar": artist.avatar,
             "nickName": artist.nickName,
-            "recommendWords": recommendWords,
+            "recommendWord1": artist.recommendWord1,
+            "recommendWord2": artist.recommendWord2,
+            "recommendWord3": artist.recommendWord3,
             "priorityRating": artist.priorityRating or 0,
             "create_time": artist.create_time
         })
@@ -337,12 +340,7 @@ def latest_artists():
 
     # 构造返回数据（只保留要求字段）
     result = [
-        {
-            "artistId": item["artistId"],
-            "nickName": item["nickName"],
-            "recommendWords": item["recommendWords"]
-        }
-        for item in novices
+        item for item in novices
     ]
 
     return response(0, "success", result)
