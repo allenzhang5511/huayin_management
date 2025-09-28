@@ -8,7 +8,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def save_file(file, folder='files'):
-    if not file or not allowed_file(file.filename):
+    if not file:
         return None
     ext = file.filename.rsplit('.', 1)[1].lower()
     filename = f"{int(time.time() * 1000)}_{folder}.{ext}"
