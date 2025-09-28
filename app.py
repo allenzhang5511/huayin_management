@@ -360,7 +360,7 @@ def partnership_rank():
 
     for artist in artists:
         # 获取该艺人在当前 job 下的评分（按时间倒序）
-        scores = Evaluation.query.filter_by(artistId=artist.artistId, job=job) \
+        scores = Evaluation.query.filter_by(artistId=artist.artistId) \
             .order_by(Evaluation.create_time.desc()) \
             .limit(3).all()
 
