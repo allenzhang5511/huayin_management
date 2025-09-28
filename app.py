@@ -418,12 +418,7 @@ def partnership_rank():
 
     # 返回最终列表
     result = [
-        {
-            "artistId": v["artistId"],
-            "nickName": v["nickName"],
-            "score": v["score"]
-        }
-        for v in veterans
+        v for v in veterans
     ]
 
     return response(0, "success", result)
