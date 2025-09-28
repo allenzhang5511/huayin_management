@@ -142,7 +142,7 @@ def add_artist():
 def update_artist():
     req = request.get_json()
     params = req.get('params', {})
-    artist_id = params.get('id')
+    artist_id = params.get('artistId":')
 
     artist = Artist.query.get(artist_id)
     if not artist:
