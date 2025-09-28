@@ -388,7 +388,7 @@ def partnership_rank():
         if score_count > 0:
             # 有评分，取最近1~3次的平均分
             total = sum(s.score for s in scores)
-            final_score = round(total / score_count, 2)
+            final_score = round(total / score_count, 1)
         else:
             # 无评分
             if artist.priorityRating and artist.priorityRating > 0:
