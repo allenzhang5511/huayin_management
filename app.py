@@ -144,7 +144,7 @@ def update_artist():
     params = req.get('params', {})
     artist_id = params.get('artistId":')
 
-    artist = Artist.query.get(artist_id)
+    artist = Artist.query.filter_by(artistId=artist_id).first()
     if not artist:
         return response(code=404, msg="艺人不存在")
 
